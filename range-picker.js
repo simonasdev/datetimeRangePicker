@@ -72,7 +72,7 @@ angular.module('rgkevin.datetimeRangePicker', ['vr.directives.slider'])
 
 			return '<div class="rg-range-picker" ng-class="{\'rg-range-picker-vertical\':vertical}">' +
                         '<div class="rg-range-picker-box well" ng-class="{ \'only-calendars\': !data.hasTimeSliders, \'only-slider\': !data.hasDatePickers }">' +
-                            '<div class="rg-range-picker-calendars" ng-if="data.hasDatePickers">' +
+                            '<div class="rg-range-picker-calendars" ng-show="data.hasDatePickers">' +
                                 '<div class="rg-range-picker-calendar-box">' +
                                     '<h5 class="rg-range-picker-calendar-label" ng-bind-template="{{datepickerTitles.from}}"></h5>' +
                                     '<uib-datepicker ng-model="data.date.from" max-date="data.date.to" min-date="data.date.min" show-weeks="false" class="clean-calendar"></uib-datepicker>' +
@@ -82,7 +82,7 @@ angular.module('rgkevin.datetimeRangePicker', ['vr.directives.slider'])
                                     '<uib-datepicker ng-model="data.date.to" min-date="data.date.from" max-date="data.date.max" show-weeks="false" class="clean-calendar"></uib-datepicker>' +
                                 '</div>' +
                             '</div>' +
-                            '<div class="rg-range-picker-slider" id="rgRangePickerSliderContainer" ng-if="data.hasTimeSliders">' +
+                            '<div class="rg-range-picker-slider" id="rgRangePickerSliderContainer" ng-show="data.hasTimeSliders">' +
                                 '<div class="rg-range-picker-slider-labels">' +
                                     '<div class="row">' +
                                         '<div class="rg-range-picker-divider xs-hidden"><span class="label">to</span></div>' +
