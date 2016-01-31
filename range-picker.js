@@ -33,7 +33,8 @@ angular.module('rgkevin.datetimeRangePicker', ['vr.directives.slider'])
         return function (input, type, includeSeconds) {
             var
                 hours = parseInt( input / 60, 10 ),
-                minutes = (input - (hours * 60)) < 10 ? '0' + (input - (hours * 60)) : input - (hours * 60);
+                minutes = (input - (hours * 60)) < 10 ? '0' + (input - (hours * 60)) : input - (hours * 60),
+                meridian;
 
             if (type) {
                 meridian = includeSeconds ? ':00' : '';
