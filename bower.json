@@ -25,11 +25,10 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.0",
-    "angular-animate": "~1.2.0",
-    "angular-touch": "~1.2.0",
-    "angular-sanitize": "~1.2.0",
-    "venturocket-angular-slider": "~0.3.2",
+    "angular": ">=1.3.0",
+    "angular-animate": ">=1.3.0",
+    "angular-sanitize": ">=1.3.0",
+    "venturocket-angular-slider": "git@github.com:drgould/angular-slider.git#master",
     "jquery": "~2.1.1"
   },
   "devDependencies": {}
