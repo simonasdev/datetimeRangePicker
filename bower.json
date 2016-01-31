@@ -27,6 +27,7 @@
   "dependencies": {
     "angular": "~1.2.0",
     "angular-animate": "~1.2.0",
+    "angular-touch": "~1.2.0",
     "angular-sanitize": "~1.2.0",
     "venturocket-angular-slider": "~0.3.2",
     "jquery": "~2.1.1"
