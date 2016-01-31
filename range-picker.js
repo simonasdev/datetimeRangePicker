@@ -185,9 +185,9 @@ angular.module('rgkevin.datetimeRangePicker', ['vr.directives.slider'])
                     timeChangePromise = $timeout( function(){
 
                         scope.onTimeChange()({
-                            from: $filter('rgTime')(scope.data.time.from, true),
-                            to: $filter('rgTime')(scope.data.time.to, true),
-                            range: $filter('rgTime')( scope.data.time.to - scope.data.time.from , true)
+                            from: $filter('rgTime')(scope.data.time.from, true, true),
+                            to: $filter('rgTime')(scope.data.time.to, true, true),
+                            range: $filter('rgTime')( scope.data.time.to - scope.data.time.from , true, true)
                         });
 
                     }, 500);
