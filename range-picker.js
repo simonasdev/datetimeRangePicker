@@ -28,12 +28,18 @@ angular.module('rgkevin.datetimeRangePicker', ['vr.directives.slider'])
          * input should be a number of minutes to be parsed
          * @param {input} number of minutes
          * @param {type} true = 00:00:00 | false = 00:00 am or pm
+         * @param {type} true = 00:00:00 | false = 00:00
          */
-        return function (input, type) {
+        return function (input, type, includeSeconds) {
             var
                 hours = parseInt( input / 60, 10 ),
                 minutes = (input - (hours * 60)) < 10 ? '0' + (input - (hours * 60)) : input - (hours * 60),
-                meridian = type ? ':00' : ( hours >= 12 && hours !== 24 ? ' pm' : ' am' );
+
+            if (type) {
+                meridian = includeSeconds ? ':00' : '';
+            } else {
+                meridian = hours >= 12 && hours !== 24 ? ' pm' : ' am';
+            }
 
             return (!type && hours > 12 ? (hours === 24 ? '00' : (hours - 12 < 10 ? '0': '' ) + (hours - 12) ) : (hours < 10 ? '0' : '') + hours) + ':' + minutes + meridian;
         };
@@ -86,8 +92,8 @@ angular.module('rgkevin.datetimeRangePicker', ['vr.directives.slider'])
                                 '<div class="rg-range-picker-slider-labels">' +
                                     '<div class="row">' +
                                         '<div class="rg-range-picker-divider xs-hidden"><span class="label">to</span></div>' +
-                                        '<div class="col-xs-6 text-center"><span class="label label-range-picker">{{data.time.from | rgTime:data.time.hours24}}</span></div>' +
-                                        '<div class="col-xs-6 text-center"><span class="label label-range-picker">{{data.time.to | rgTime:data.time.hours24}}</span></div>' +
+                                        '<div class="col-xs-6 text-center"><span class="label label-range-picker">{{data.time.from | rgTime: data.time.hours24:data.includeSeconds}}</span></div>' +
+                                        '<div class="col-xs-6 text-center"><span class="label label-range-picker">{{data.time.to | rgTime: data.time.hours24:data.includeSeconds}}</span></div>' +
                                     '</div>' +
                                 '</div>' +
                             '</div>' +
@@ -129,6 +135,9 @@ angular.module('rgkevin.datetimeRangePicker', ['vr.directives.slider'])
             scope.data.hasTimeSliders = angular.isObject(scope.data.time);
             scope.datepickerTitles = angular.extend(defaultLabels.date, scope.labels && scope.labels.date ); // set labels for date pickers
 
+            if (angular.isUndefined(scope.data.includeSeconds)) {
+                scope.data.includeSeconds = true;
+            }
             if (scope.data.hasDatePickers) {
                 scope.data.date = angular.extend(dateDefaults, scope.data.date);
             }
